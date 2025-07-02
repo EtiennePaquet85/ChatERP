@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: chaterp-database
+    env: docker
+    plan: free
+    image: etiennepaquet85/chaterp-persistence:latest
+    envVars: []
+    routes:
+      - type: http
+        name: database
+        port: 80
+
+  - type: web
+    name: chaterp-backend
+    env: docker
+    plan: free
+    image: etiennepaquet85/chaterp-server:latest
+    envVars:
+      - key: DATABASE_API_URL
+        value: https://chaterp-database.onrender.com
+      - key: ASPNETCORE_PORT
+        value: "80"
+    routes:
+      - type: http
+        name: backend
+        port: 80
+
+  - type: web
+    name: chaterp-frontend
+    env: docker
+    plan: free
+    image: etiennepaquet85/chaterp-web:latest
+    envVars:
+      - key: VITE_API_URL
+        value: https://chaterp-backend.onrender.com
+    routes:
+      - type: http
+        name: frontend
+        port: 80
