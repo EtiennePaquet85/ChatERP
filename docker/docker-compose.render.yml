@@ -1,0 +1,23 @@
+# ChatERP/docker/docker-compose.render.yml
+
+version: "3.9"
+
+services:
+  backend:
+    image: etiennepaquet85/chaterp-server:latest
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_API_URL=http://database:8000
+
+  database:
+    image: etiennepaquet85/chaterp-persistence:latest
+    ports:
+      - "8000:8000"
+
+  frontend:
+    image: etiennepaquet85/chaterp-web:latest
+    ports:
+      - "5173:80"
+    environment:
+      - VITE_API_URL=http://backend:5000
