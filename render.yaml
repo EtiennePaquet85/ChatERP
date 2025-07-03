@@ -8,25 +8,3 @@ services:
     envVars:
       - key: PORT
         value: "80"
-
-  - type: web
-    name: chaterp-backend
-    plan: free
-    runtime: docker
-    image:
-      url: etiennepaquet85/chaterp-server:latest
-    envVars:
-      - key: DATABASE_API_URL
-        value: "https://chaterp-database.onrender.com"
-      - key: ASPNETCORE_PORT
-        value: "80"
-
-  - type: web
-    name: chaterp-frontend
-    plan: free
-    runtime: docker
-    image:
-      url: etiennepaquet85/chaterp-web:latest
-    envVars:
-      - key: VITE_API_URL
-        value: "https://chaterp-backend.onrender.com"
