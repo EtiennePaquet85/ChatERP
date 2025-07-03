@@ -2,7 +2,8 @@ services:
   - type: web
     name: chaterp-database
     plan: free
-    dockerfilePath: ./Dockerfile
+    runtime: docker
+    dockerfilePath: ./database/Dockerfile
     envVars:
       - key: PORT
         value: "80"
@@ -10,7 +11,8 @@ services:
   - type: web
     name: chaterp-backend
     plan: free
-    dockerfilePath: ./Dockerfile
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
     envVars:
       - key: DATABASE_API_URL
         value: "https://chaterp-database.onrender.com"
@@ -20,7 +22,8 @@ services:
   - type: web
     name: chaterp-frontend
     plan: free
-    dockerfilePath: ./Dockerfile
+    runtime: docker
+    dockerfilePath: ./frontend/Dockerfile
     envVars:
       - key: VITE_API_URL
         value: "https://chaterp-backend.onrender.com"
