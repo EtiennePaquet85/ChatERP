@@ -1,29 +1,7 @@
 services:
   - type: web
-    name: chaterp-database
-    runtime: docker
-    plan: free
-    image:
-      url: etiennepaquet85/chaterp-persistence:latest
-
-  - type: web
-    name: chaterp-backend
-    runtime: docker
-    plan: free
-    image:
-      url: etiennepaquet85/chaterp-server:latest
-    envVars:
-      - key: DATABASE_API_URL
-        value: https://chaterp-database.onrender.com
-      - key: ASPNETCORE_PORT
-        value: "80"
-
-  - type: web
-    name: chaterp-frontend
+    name: test-service
     runtime: docker
     plan: free
     image:
       url: etiennepaquet85/chaterp-web:latest
-    envVars:
-      - key: VITE_API_URL
-        value: https://chaterp-backend.onrender.com
