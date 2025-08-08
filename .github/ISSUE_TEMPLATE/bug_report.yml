@@ -1,30 +1,42 @@
 name: Bug Report
-description: Signaler un bug dans ChatERP
-title: "[BUG] "
+description: Report a new bug in ChatERP
+title: "CHRP-<id> : <Summary>"
 labels: [bug]
 
 body:
+
   - type: textarea
     id: description
     attributes:
       label: Description
-      description: Décris clairement le bug.
+      description: Describe the new bug in detail.
     validations:
       required: true
 
   - type: textarea
-    id: steps
+    id: expected_behavior
     attributes:
-      label: Étapes pour reproduire
+      label: Expected Behavior
+      description: What do you expecte to happen instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Provide the steps to reproduce the bug.
       placeholder: |
-        1. Aller à ‘...’
-        2. Faire ‘...’
-        3. Observer ‘...’
+        1. Go to '...'
+        2. Do '...'
+        3. Observe '...'
     validations:
       required: true
 
   - type: input
     id: version
     attributes:
-      label: Version
-      description: (Optionnel) Tag ou commit concerné
+      label: Version (optional)
+      description: Tag or commit related to the bug.
+    validations:
+      required: false
