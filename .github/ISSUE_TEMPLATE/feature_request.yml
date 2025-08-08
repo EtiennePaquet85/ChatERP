@@ -1,19 +1,46 @@
 name: Feature Request
-description: Proposer une amélioration ou fonctionnalité
-title: "[FEATURE] "
-labels: [enhancement]
+description: Propose a new feature for ChatERP
+title: "CHRP-<id> : <Summary>"
+labels: [documentation, feature]
 
 body:
+
   - type: textarea
     id: description
     attributes:
       label: Description
-      description: Décris la fonctionnalité souhaitée.
+      description: Describe the new feature in detail.
     validations:
       required: true
 
   - type: textarea
-    id: motivation
+    id: objective
     attributes:
-      label: Objectif
-      description: Pourquoi est-ce utile ?
+      label: Objective
+      description: Why is this feature useful?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_create
+    attributes:
+      label: Steps to Create
+      description: Provide the steps to create or implement the feature.
+      placeholder: |
+        1. Prepare '...'
+        2. Execute '...'
+        3. Verify '...'
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria (optional)
+      description: What conditions must be met for this request to be considered complete?
+      placeholder: |
+        - Templates are used automatically
+        - Bugs are easily reproducible
+        - Contributions are effectively reviewed
+    validations:
+      required: false
