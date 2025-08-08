@@ -33,10 +33,10 @@ body:
     validations:
       required: true
 
-  - type: file
-    id: attachments
+  - type: textarea
+    id: attachments_info
     attributes:
       label: Attachments (optional)
-      description: Upload screenshots, logs, or other files to help diagnose the bug.
+      description: Please attach screenshots, logs, or other files using GitHub’s "Attach files" feature below the comment box.
     validations:
       required: false
