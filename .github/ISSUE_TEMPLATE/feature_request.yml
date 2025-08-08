@@ -1,7 +1,7 @@
 name: Feature Request
 description: Propose a new feature for ChatERP
 title: "CHRP-<id> : <Summary>"
-labels: [documentation, feature]
+labels: [feature]
 
 body:
 
@@ -25,11 +25,11 @@ body:
     id: steps_to_create
     attributes:
       label: Steps to Create
-      description: Provide the steps to create or implement the feature.
+      description: Provide the steps to create the feature.
       placeholder: |
-        1. Prepare '...'
-        2. Execute '...'
-        3. Verify '...'
+        1. Analyze '...'
+        2. Implement '...'
+        3. Test '...'
     validations:
       required: true
 
@@ -39,8 +39,8 @@ body:
       label: Acceptance Criteria (optional)
       description: What conditions must be met for this request to be considered complete?
       placeholder: |
-        - Templates are used automatically
-        - Bugs are easily reproducible
-        - Contributions are effectively reviewed
+        - The feature is easily testable
+        - The feature handles errors gracefully
+        - The feature is user-friendly and intuitive
     validations:
       required: false
