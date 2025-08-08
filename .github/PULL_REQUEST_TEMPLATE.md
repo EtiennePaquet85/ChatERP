@@ -1,20 +1,13 @@
 # 📦 Pull Request
 
-## Description
-
-Décris brièvement les changements apportés.
-
-## Lié à une issue ?
-
-Closes #...
+## Summary
+- Short list of commits or key modifications.
 
 ## Checklist
+- [ ] Code compiles
+- [ ] All tests pass
+- [ ] Test coverage maintained
+- [ ] Documentation updated (if needed)
 
-- [ ] Le code compile sans erreur
-- [ ] Les tests passent
-- [ ] La documentation est mise à jour si nécessaire
-- [ ] La couverture de tests est maintenue
-
-## Captures d’écran / démos (si applicable)
-
-Ajoute ici des captures ou une démonstration des changements visuels ou fonctionnels.
+## Demo (Optional)
+- Add screenshots, GIFs, or a short video.
