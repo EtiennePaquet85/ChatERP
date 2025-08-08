@@ -17,7 +17,7 @@ body:
     id: expected_behavior
     attributes:
       label: Expected Behavior
-      description: What do you expecte to happen instead?
+      description: What do you expect to happen instead?
     validations:
       required: true
 
@@ -33,10 +33,10 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: version
+  - type: file
+    id: attachments
     attributes:
-      label: Version (optional)
-      description: Tag or commit related to the bug.
+      label: Attachments (optional)
+      description: Upload screenshots, logs, or other files to help diagnose the bug.
     validations:
       required: false
