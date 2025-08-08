@@ -1,0 +1,46 @@
+name: Task Record
+description: Record a development task or technical activity in ChatERP
+title: "CHRP-<id> : <Summary>"
+labels: [documentation]
+
+body:
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the new task in detail.
+    validations:
+      required: true
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: Why is this task important?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Complete
+      description: Provide the steps to complete the task.
+      placeholder: |
+        1. Prepare '...'
+        2. Execute '...'
+        3. Verify '...'
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria (optional)
+      description: What conditions should be met for this task to be considered done?
+      placeholder: |
+        - Script runs without errors
+        - Diagram updated and reviewed
+        - Tests cover all edge cases
+    validations:
+      required: false
