@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Support ChatERP
+    url: https://github.com/EtiennePaquet85/ChatERP/issues
+    about: Pour toute question ou aide, ouvrez une issue ici.
