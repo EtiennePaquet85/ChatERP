@@ -1,13 +1,22 @@
 # 📦 Pull Request
 
 ## Summary
-- Short list of commits or key modifications.
+<!-- Add principal commits or changes introduced in this PR.   
+Example:
+- Implement home page layout
+- Enhance navigation bar accessibility -->
+- ...
 
 ## Checklist
-- [ ] Code compiles
-- [ ] All tests pass
-- [ ] Test coverage maintained
-- [ ] Documentation updated (if needed)
+- [ ] Code compiles without errors
+- [ ] All tests pass successfully
+- [ ] Test coverage maintained or improved
+- [ ] Documentation updated where applicable
+- [ ] Changes comply with coding standards
 
-## Demo (Optional)
-- Add screenshots, GIFs, or a short video.
+## References
+<!-- Add related issues, pull requests, or documents.  
+Example:
+- Issue #13
+- ./docs/architecture.md -->
+- ...
