@@ -1,0 +1,81 @@
+﻿@startuml ClassDiagram - UCS-UC-01a — Créer un employé
+
+title ChatERP – Class Diagram – Create Employee
+
+' Colors definition
+!define COLOR_FRONTEND #D0E6FF
+!define COLOR_BACKEND  #D0FFD6
+!define COLOR_DATABASE #FFF3B0
+
+' 🟦 Frontend
+package "🟦 Frontend\n(React + TypeScript)" as <<Frontend>> COLOR_FRONTEND {
+  class EmployeeComponent_tsx <<Components>> {
+    + render()
+    + handleSubmit()
+  }
+
+  class EmployeeHandler_ts <<Handlers>> {
+    + validateEmployeeData()
+    + prepareData()
+  }
+
+  class HttpEmployeeApiAdapter_ts <<Adapters>> {
+    + createEmployee(data)
+  }
+}
+
+' 🟩 Backend
+package "🟩 Backend\n(ASP.NET Core)" as <<Backend>> COLOR_BACKEND {
+  class EmployeeController_cs <<Controllers>> {
+    + POST /employees
+    + validateRequest()
+  }
+
+  class EmployeeService_cs <<Services>> {
+    + execute(employeeDto)
+    + applyBusinessRules()
+  }
+
+  class HttpEmployeeApiClient_cs <<Clients>> {
+    + add(employee)
+    + saveChanges()
+  }
+}
+
+' 🟨 Database
+package "🟨 Database\n(FastAPI + SQLite)" as <<Database>> COLOR_DATABASE {
+  class employee_router_py <<Routers>> {
+    + POST /employees
+  }
+
+  class employee_manager_py <<Managers>> {
+    + processCreate(employeeData)
+  }
+
+  class employee_repository_py <<Repositories>> {
+    + insert(employee)
+    + commit()
+  }
+}
+
+' Flows
+
+' Frontend internal flow
+EmployeeComponent_tsx --> EmployeeHandler_ts : "validate form data"
+EmployeeHandler_ts --> HttpEmployeeApiAdapter_ts : "send employee payload"
+
+' Frontend to Backend
+HttpEmployeeApiAdapter_ts -right-> EmployeeController_cs : "HTTP POST /employees"
+
+' Backend internal flow
+EmployeeController_cs --> EmployeeService_cs : "process creation request"
+EmployeeService_cs --> HttpEmployeeApiClient_cs : "store employee entity"
+
+' Backend to Database
+HttpEmployeeApiClient_cs -right-> employee_router_py : "HTTP POST /employees"
+
+' Database internal flow
+employee_router_py --> employee_manager_py : "trigger employee creation"
+employee_manager_py --> employee_repository_py : "insert into database"
+
+@enduml

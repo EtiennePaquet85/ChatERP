@@ -1,0 +1,51 @@
+﻿@startuml ComponentDiagram
+
+title ChatERP – Component Diagram
+
+' Définition des couleurs
+!define COLOR_FRONTEND #D0E6FF
+!define COLOR_BACKEND  #D0FFD6
+!define COLOR_DATABASE #FFF3B0
+
+' 🟦 Frontend
+package "🟦 Frontend\n(React + TypeScript)" as <<Frontend>> COLOR_FRONTEND {
+  [components]   as F1 <<Module>>
+  [handlers]     as F2 <<Module>>
+  [adapters]     as F3 <<Module>>
+}
+
+' 🟩 Backend
+package "🟩 Backend\n(ASP.NET Core)" as <<Backend>> COLOR_BACKEND {
+  [controllers]  as B1 <<Module>>
+  [services]     as B2 <<Module>>
+  [clients]      as B3 <<Module>>
+}
+
+' 🟨 Database
+package "🟨 Database\n(FastAPI + SQLite)" as <<Database>> COLOR_DATABASE {
+  [routers]      as D1 <<Module>>
+  [managers]     as D2 <<Module>>
+  [repositories] as D3 <<Module>>
+}
+
+' Flows
+
+' Internal flow - Frontend
+F1 --> F2 : UI events
+F2 --> F3 : HTTP calls
+
+' Frontend → Backend
+F3 -right-> B1 : HTTP POST
+
+' Internal flow - Backend
+B1 --> B2 : Business logic
+B2 --> B3 : Repository call
+
+' Backend → Database
+B3 -right-> D1 : HTTP POST
+
+' Internal flow - Database
+D1 --> D2 : API logic
+D2 --> D3 : Data access
+
+@enduml

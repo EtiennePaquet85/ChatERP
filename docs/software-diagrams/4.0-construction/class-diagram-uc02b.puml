@@ -1,0 +1,79 @@
+﻿@startuml ClassDiagram - UCS-UC-02b — Consulter un employé
+
+title ChatERP – Class Diagram – Read Employee
+
+' Colors definition
+!define COLOR_FRONTEND #D0E6FF
+!define COLOR_BACKEND  #D0FFD6
+!define COLOR_DATABASE #FFF3B0
+
+' 🟦 Frontend
+package "🟦 Frontend\n(React + TypeScript)" as <<Frontend>> COLOR_FRONTEND {
+  class EmployeeComponent_tsx <<Components>> {
+    + render()
+    + useEffect()
+  }
+
+  class EmployeeHandler_ts <<Handlers>> {
+    + fetchEmployeeById(id)
+    + formatData()
+  }
+
+  class HttpEmployeeApiAdapter_ts <<Adapters>> {
+    + getEmployeeById(id)
+  }
+}
+
+' 🟩 Backend
+package "🟩 Backend\n(ASP.NET Core)" as <<Backend>> COLOR_BACKEND {
+  class EmployeeController_cs <<Controllers>> {
+    + GET /employees/{id}
+    + validateQuery()
+  }
+
+  class EmployeeService_cs <<Services>> {
+    + execute(id)
+    + applyFilters()
+  }
+
+  class HttpEmployeeApiClient_cs <<Clients>> {
+    + getById(id)
+  }
+}
+
+' 🟨 Database
+package "🟨 Database\n(FastAPI + SQLite)" as <<Database>> COLOR_DATABASE {
+  class employee_router_py <<Routers>> {
+    + GET /employees/{id}
+  }
+
+  class employee_manager_py <<Managers>> {
+    + fetchById(id)
+  }
+
+  class employee_repository_py <<Repositories>> {
+    + getById(id)
+  }
+}
+
+' Flows
+
+' Frontend internal flow
+EmployeeComponent_tsx --> EmployeeHandler_ts : "trigger fetch employee by ID"
+EmployeeHandler_ts --> HttpEmployeeApiAdapter_ts : "request employee data by ID"
+
+' Frontend to Backend
+HttpEmployeeApiAdapter_ts -right-> EmployeeController_cs : "HTTP GET /employees/{id}"
+
+' Backend internal flow
+EmployeeController_cs --> EmployeeService_cs : "retrieve employee details"
+EmployeeService_cs --> HttpEmployeeApiClient_cs : "fetch employee by ID"
+
+' Backend to Database
+HttpEmployeeApiClient_cs -right-> employee_router_py : "HTTP GET /employees/{id}"
+
+' Database internal flow
+employee_router_py --> employee_manager_py : "handle detail request"
+employee_manager_py --> employee_repository_py : "query database by ID"
+
+@enduml

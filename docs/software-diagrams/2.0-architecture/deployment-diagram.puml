@@ -1,0 +1,39 @@
+﻿@startuml DeploymentDiagram
+
+title ChatERP – Deployment Diagram
+
+skinparam component {
+  BackgroundColor<<Frontend>> #D0E6FF
+  BackgroundColor<<Backend>>  #D0FFD6
+  BackgroundColor<<Database>> #FFF3B0
+  BorderColor Black
+}
+
+' 🖥️ Employee
+node "🖥️ Employee\n(User)" {
+  [Web Browser] as WebBrowser
+}
+
+' 🟦 Frontend Server
+node "🟦 Frontend Server\n(React + TS)" {
+  [React Server] as ReactServer <<Frontend>>
+}
+
+' 🟩 Backend Server
+node "🟩 Backend Server\n(ASP.NET Core)" {
+  [ASP.NET Core Server] as BackendServer <<Backend>>
+}
+
+' 🟨 Database Server
+node "🟨 Database Server\n(FastAPI + SQLite)" {
+  [FastAPI Service] as PersistenceAPI <<Database>>
+  database "SQLite DB" as SQLiteDB <<Database>>
+}
+
+' Communication links
+WebBrowser -right-> ReactServer : HTTP
+ReactServer -right-> BackendServer : HTTP (REST)
+BackendServer -right-> PersistenceAPI : HTTP (REST)
+PersistenceAPI --> SQLiteDB : SQL access
+
+@enduml

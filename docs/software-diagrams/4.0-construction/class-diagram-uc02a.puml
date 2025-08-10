@@ -1,0 +1,79 @@
+﻿@startuml ClassDiagram - UCS-UC-02a — Consulter la liste d’employés
+
+title ChatERP – Class Diagram – Read Employee List
+
+' Colors definition
+!define COLOR_FRONTEND #D0E6FF
+!define COLOR_BACKEND  #D0FFD6
+!define COLOR_DATABASE #FFF3B0
+
+' 🟦 Frontend
+package "🟦 Frontend\n(React + TypeScript)" as <<Frontend>> COLOR_FRONTEND {
+  class EmployeeComponent_tsx <<Components>> {
+    + render()
+    + useEffect()
+  }
+
+  class EmployeeHandler_ts <<Handlers>> {
+    + fetchEmployees()
+    + formatData()
+  }
+
+  class HttpEmployeeApiAdapter_ts <<Adapters>> {
+    + getEmployees()
+  }
+}
+
+' 🟩 Backend
+package "🟩 Backend\n(ASP.NET Core)" as <<Backend>> COLOR_BACKEND {
+  class EmployeeController_cs <<Controllers>> {
+    + GET /employees
+    + validateQuery()
+  }
+
+  class EmployeeService_cs <<Services>> {
+    + execute()
+    + applyFilters()
+  }
+
+  class HttpEmployeeApiClient_cs <<Clients>> {
+    + getAll()
+  }
+}
+
+' 🟨 Database
+package "🟨 Database\n(FastAPI + SQLite)" as <<Database>> COLOR_DATABASE {
+  class employee_router_py <<Routers>> {
+    + GET /employees
+  }
+
+  class employee_manager_py <<Managers>> {
+    + fetchAll()
+  }
+
+  class employee_repository_py <<Repositories>> {
+    + getAll()
+  }
+}
+
+' Flows
+
+' Frontend internal flow
+EmployeeComponent_tsx --> EmployeeHandler_ts : "trigger data fetch"
+EmployeeHandler_ts --> HttpEmployeeApiAdapter_ts : "request employee data"
+
+' Frontend to Backend
+HttpEmployeeApiAdapter_ts -right-> EmployeeController_cs : "HTTP GET /employees"
+
+' Backend internal flow
+EmployeeController_cs --> EmployeeService_cs : "retrieve employee list"
+EmployeeService_cs --> HttpEmployeeApiClient_cs : "fetch employees"
+
+' Backend to Database
+HttpEmployeeApiClient_cs -right-> employee_router_py : "HTTP GET /employees"
+
+' Database internal flow
+employee_router_py --> employee_manager_py : "handle list request"
+employee_manager_py --> employee_repository_py : "query database"
+
+@enduml
