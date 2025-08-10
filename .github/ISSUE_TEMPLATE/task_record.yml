@@ -1,9 +1,13 @@
 name: Task Record
 description: Record a development task or technical activity in ChatERP
 title: "CHRP-<id> : <Summary>"
-labels: [documentation]
+labels: [task]
 
 body:
+  - type: markdown
+    attributes:
+      value: |
+        **Issue Type:** Task
 
   - type: textarea
     id: description
