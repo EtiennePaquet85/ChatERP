@@ -1,0 +1,50 @@
+﻿@startuml SequenceDiagram - UCS-UC-01a — Créer un employé
+
+title ChatERP – Sequence Diagram – Create Employee
+
+actor user
+
+box "🟦 Frontend (React + TypeScript)" #D0E6FF
+  participant "EmployeeComponent.tsx\n(components/)" as employeeComponent
+  participant "employeeHandler.ts\n(handlers/)" as employeeHandler
+  participant "httpEmployeeApiAdapter.ts\n(adapters/)" as employeeAdapter
+end box
+
+box "🟩 Backend (ASP.NET Core C#)" #D0FFD6
+  participant "EmployeeController.cs\n(Controllers/)" as controller
+  participant "EmployeeService.cs\n(Services/)" as service
+  participant "HttpEmployeeApiClient.cs\n(Clients/)" as repositoryClient
+end box
+
+box "🟨 Database (FastAPI Python)" #FFF3B0
+  participant "employee_router.py\n(routers/)" as router
+  participant "employee_manager.py\n(managers/)" as manager
+  participant "employee_repository.py\n(repositories/)" as repository
+end box
+
+== 📤 Request Submission ==
+user -> employeeComponent: Submit new employee form
+employeeComponent -> employeeHandler: trigger data creation
+employeeHandler -> employeeAdapter: Send POST request
+employeeAdapter -> controller: HTTP POST /employees
+
+== ⚙️ Business Execution ==  
+controller -> service: validate and process creation (execute)  
+service -> repositoryClient: persist new employee (insert + saveChanges)  
+repositoryClient -> router: HTTP POST /employees  
+
+== 🗃️ Data Operation ==  
+router -> manager: manage creation request (processCreate)  
+manager -> repository: insert new employee (insert + commit)  
+repository --> manager: result (confirmation or error)  
+
+== 📩 Response Transmission ==  
+manager --> router: response  
+router --> repositoryClient: HTTP 201 or 4xx/5xx
+repositoryClient --> service: create result  
+service --> controller: create result  
+controller --> employeeAdapter: HTTP 201 or 4xx/5xx 
+employeeAdapter --> employeeHandler: create result  
+employeeHandler --> employeeComponent: update UI (confirmation or error)
+
+@enduml

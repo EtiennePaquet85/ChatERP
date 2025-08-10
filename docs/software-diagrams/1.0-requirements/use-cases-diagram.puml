@@ -1,0 +1,28 @@
+﻿@startuml UseCasesDiagram
+
+title ChatERP – Use Cases Diagram – Employee Management
+
+left to right direction
+
+actor "Employé" as Employee
+
+rectangle "ChatERP System" {
+  usecase "UCS-UC-01a – Créer un employé"             as UC01a
+  usecase "UCS-UC-01b – Téléverser une photo"         as UC01b
+  usecase "UCS-UC-02a – Consulter la liste"           as UC02a
+  usecase "UCS-UC-02b – Consulter un employé"         as UC02b
+  usecase "UCS-UC-03 – Modifier un employé"           as UC03
+  usecase "UCS-UC-04 – Supprimer un employé"          as UC04
+}
+
+Employee --> UC01a
+Employee --> UC01b
+Employee --> UC02a
+Employee --> UC02b
+Employee --> UC03
+Employee --> UC04
+
+UC01a --> UC01b : inclut
+UC03  --> UC01b : inclut
+
+@enduml

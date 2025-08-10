@@ -1,0 +1,80 @@
+﻿@startuml ClassDiagram - UCS-UC-04 — Supprimer un employé
+
+title ChatERP – Class Diagram – Delete Employee
+
+' Colors definition
+!define COLOR_FRONTEND #D0E6FF
+!define COLOR_BACKEND  #D0FFD6
+!define COLOR_DATABASE #FFF3B0
+
+' 🟦 Frontend
+package "🟦 Frontend\n(React + TypeScript)" as <<Frontend>> COLOR_FRONTEND {
+  class EmployeeComponent_tsx <<Components>> {
+    + render()
+    + handleDelete(id)
+  }
+
+  class EmployeeHandler_ts <<Handlers>> {
+    + confirmDeletion(id)
+  }
+
+  class HttpEmployeeApiAdapter_ts <<Adapters>> {
+    + deleteEmployee(id)
+  }
+}
+
+' 🟩 Backend
+package "🟩 Backend\n(ASP.NET Core)" as <<Backend>> COLOR_BACKEND {
+  class EmployeeController_cs <<Controllers>> {
+    + DELETE /employees/{id}
+    + validateRequest()
+  }
+
+  class EmployeeService_cs <<Services>> {
+    + execute(id)
+    + checkConstraints()
+  }
+
+  class HttpEmployeeApiClient_cs <<Clients>> {
+    + delete(id)
+    + saveChanges()
+  }
+}
+
+' 🟨 Database
+package "🟨 Database\n(FastAPI + SQLite)" as <<Database>> COLOR_DATABASE {
+  class employee_router_py <<Routers>> {
+    + DELETE /employees/{id}
+  }
+
+  class employee_manager_py <<Managers>> {
+    + processDelete(id)
+  }
+
+  class employee_repository_py <<Repositories>> {
+    + delete(id)
+    + commit()
+  }
+}
+
+' Flows
+
+' Frontend internal flow
+EmployeeComponent_tsx --> EmployeeHandler_ts : "confirm deletion"
+EmployeeHandler_ts --> HttpEmployeeApiAdapter_ts : "send delete request"
+
+' Frontend to Backend
+HttpEmployeeApiAdapter_ts -right-> EmployeeController_cs : "HTTP DELETE /employees/{id}"
+
+' Backend internal flow
+EmployeeController_cs --> EmployeeService_cs : "validate and process"
+EmployeeService_cs --> HttpEmployeeApiClient_cs : "remove employee"
+
+' Backend to Database
+HttpEmployeeApiClient_cs -right-> employee_router_py : "HTTP DELETE /employees/{id}"
+
+' Database internal flow
+employee_router_py --> employee_manager_py : "initiate deletion"
+employee_manager_py --> employee_repository_py : "delete from database"
+
+@enduml

@@ -1,0 +1,77 @@
+﻿@startuml ClassDiagram - UCS-UC-01b — Téléverser une photo d’employé
+
+title ChatERP – Class Diagram – Upload Employee Photo
+
+' Colors definition
+!define COLOR_FRONTEND #D0E6FF
+!define COLOR_BACKEND  #D0FFD6
+!define COLOR_DATABASE #FFF3B0
+
+' 🟦 Frontend
+package "🟦 Frontend\n(React + TypeScript)" as <<Frontend>> COLOR_FRONTEND {
+  class EmployeeComponent_tsx <<Components>> {
+    + handlePhotoUpload(file)
+  }
+
+  class EmployeeHandler_ts <<Handlers>> {
+    + preparePhotoFormData()
+  }
+
+  class HttpEmployeeApiAdapter_ts <<Adapters>> {
+    + uploadEmployeePhoto(formData)
+  }
+}
+
+' 🟩 Backend
+package "🟩 Backend\n(ASP.NET Core)" as <<Backend>> COLOR_BACKEND {
+  class EmployeeController_cs <<Controllers>> {
+    + POST /employees/photo
+    + validateFile()
+  }
+
+  class EmployeeService_cs <<Services>> {
+    + storePhoto(file)
+  }
+
+  class HttpEmployeeApiClient_cs <<Clients>> {
+    + uploadPhoto(employeeId, file)
+  }
+}
+
+' 🟨 Database
+package "🟨 Database\n(FastAPI + SQLite)" as <<Database>> COLOR_DATABASE {
+  class employee_router_py <<Routers>> {
+    + POST /employees/photo
+  }
+
+  class employee_manager_py <<Managers>> {
+    + savePhoto(employeeId, file)
+  }
+
+  class employee_repository_py <<Repositories>> {
+    + updatePhoto(employeeId, path)
+    + commit()
+  }
+}
+
+' Flows
+
+' Frontend internal flow
+EmployeeComponent_tsx --> EmployeeHandler_ts : "prepare photo payload"
+EmployeeHandler_ts --> HttpEmployeeApiAdapter_ts : "send multipart/form-data"
+
+' Frontend to Backend
+HttpEmployeeApiAdapter_ts -right-> EmployeeController_cs : "HTTP POST /employees/photo"
+
+' Backend internal flow
+EmployeeController_cs --> EmployeeService_cs : "validate and process file"
+EmployeeService_cs --> HttpEmployeeApiClient_cs : "forward to persistence layer"
+
+' Backend to Database
+HttpEmployeeApiClient_cs -right-> employee_router_py : "HTTP POST /employees/photo"
+
+' Database internal flow
+employee_router_py --> employee_manager_py : "handle photo upload"
+employee_manager_py --> employee_repository_py : "save photo file path"
+
+@enduml

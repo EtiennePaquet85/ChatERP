@@ -1,0 +1,81 @@
+﻿@startuml ClassDiagram - UCS-UC-03 — Modifier un employé
+
+title ChatERP – Class Diagram – Update Employee
+
+' Colors definition
+!define COLOR_FRONTEND #D0E6FF
+!define COLOR_BACKEND  #D0FFD6
+!define COLOR_DATABASE #FFF3B0
+
+' 🟦 Frontend
+package "🟦 Frontend\n(React + TypeScript)" as <<Frontend>> COLOR_FRONTEND {
+  class EmployeeComponent_tsx <<Components>> {
+    + render()
+    + handleUpdate()
+  }
+
+  class EmployeeHandler_ts <<Handlers>> {
+    + validateUpdateData()
+    + prepareUpdatePayload()
+  }
+
+  class HttpEmployeeApiAdapter_ts <<Adapters>> {
+    + updateEmployee(id, data)
+  }
+}
+
+' 🟩 Backend
+package "🟩 Backend\n(ASP.NET Core)" as <<Backend>> COLOR_BACKEND {
+  class EmployeeController_cs <<Controllers>> {
+    + PUT /employees/{id}
+    + validateRequest()
+  }
+
+  class EmployeeService_cs <<Services>> {
+    + execute(id, updatedDto)
+    + applyBusinessRules()
+  }
+
+  class HttpEmployeeApiClient_cs <<Clients>> {
+    + update(id, employee)
+    + saveChanges()
+  }
+}
+
+' 🟨 Database
+package "🟨 Database\n(FastAPI + SQLite)" as <<Database>> COLOR_DATABASE {
+  class employee_router_py <<Routers>> {
+    + PUT /employees/{id}
+  }
+
+  class employee_manager_py <<Managers>> {
+    + processUpdate(id, data)
+  }
+
+  class employee_repository_py <<Repositories>> {
+    + update(id, employee)
+    + commit()
+  }
+}
+
+' Flows
+
+' Frontend internal flow
+EmployeeComponent_tsx --> EmployeeHandler_ts : "prepare updated data"
+EmployeeHandler_ts --> HttpEmployeeApiAdapter_ts : "send update request"
+
+' Frontend to Backend
+HttpEmployeeApiAdapter_ts -right-> EmployeeController_cs : "HTTP PUT /employees/{id}"
+
+' Backend internal flow
+EmployeeController_cs --> EmployeeService_cs : "process update"
+EmployeeService_cs --> HttpEmployeeApiClient_cs : "persist changes"
+
+' Backend to Database
+HttpEmployeeApiClient_cs -right-> employee_router_py : "HTTP PUT /employees/{id}"
+
+' Database internal flow
+employee_router_py --> employee_manager_py : "handle update logic"
+employee_manager_py --> employee_repository_py : "apply modifications"
+
+@enduml

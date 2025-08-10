@@ -1,0 +1,50 @@
+﻿@startuml SequenceDiagram - UCS-UC-01b — Téléverser une photo d’employé
+
+title ChatERP – Sequence Diagram – Upload Employee Photo
+
+actor user
+
+box "🟦 Frontend (React + TypeScript)" #D0E6FF
+  participant "EmployeeComponent.tsx\n(components/)" as employeeComponent
+  participant "employeeHandler.ts\n(handlers/)" as employeeHandler
+  participant "httpEmployeeApiAdapter.ts\n(adapters/)" as employeeAdapter
+end box
+
+box "🟩 Backend (ASP.NET Core C#)" #D0FFD6
+  participant "EmployeeController.cs\n(Controllers/)" as controller
+  participant "EmployeeService.cs\n(Services/)" as service
+  participant "HttpEmployeeApiClient.cs\n(Clients/)" as repositoryClient
+end box
+
+box "🟨 Database (FastAPI Python)" #FFF3B0
+  participant "employee_router.py\n(routers/)" as router
+  participant "employee_manager.py\n(managers/)" as manager
+  participant "employee_repository.py\n(repositories/)" as repository
+end box
+
+== 📤 Request Submission ==
+user -> employeeComponent: Submit employee photo
+employeeComponent -> employeeHandler: trigger photo upload
+employeeHandler -> employeeAdapter: Send POST request with photo
+employeeAdapter -> controller: HTTP POST /employees/photo
+
+== ⚙️ Business Execution ==  
+controller -> service: validate and process photo upload (execute)  
+service -> repositoryClient: persist photo info (insert + saveChanges)  
+repositoryClient -> router: HTTP POST /employees/photo  
+
+== 🗃️ Data Operation ==  
+router -> manager: manage photo upload request (processCreatePhoto)  
+manager -> repository: insert/update photo data (insert/update + commit)  
+repository --> manager: result (confirmation or error)  
+
+== 📩 Response Transmission ==  
+manager --> router: response  
+router --> repositoryClient: HTTP 201 or 4xx/5xx
+repositoryClient --> service: upload result  
+service --> controller: upload result  
+controller --> employeeAdapter: HTTP 201 or 4xx/5xx 
+employeeAdapter --> employeeHandler: upload result  
+employeeHandler --> employeeComponent: update UI (confirmation or error)
+
+@enduml

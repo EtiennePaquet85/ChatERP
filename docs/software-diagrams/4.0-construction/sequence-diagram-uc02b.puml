@@ -1,0 +1,50 @@
+﻿@startuml SequenceDiagram - UCS-UC-02b — Consulter un employé
+
+title ChatERP – Sequence Diagram – Read Employee
+
+actor user
+
+box "🟦 Frontend (React + TypeScript)" #D0E6FF
+  participant "EmployeeComponent.tsx\n(components/)" as employeeComponent
+  participant "employeeHandler.ts\n(handlers/)" as employeeHandler
+  participant "httpEmployeeApiAdapter.ts\n(adapters/)" as employeeAdapter
+end box
+
+box "🟩 Backend (ASP.NET Core C#)" #D0FFD6
+  participant "EmployeeController.cs\n(Controllers/)" as controller
+  participant "EmployeeService.cs\n(Services/)" as service
+  participant "HttpEmployeeApiClient.cs\n(Clients/)" as repositoryClient
+end box
+
+box "🟨 Database (FastAPI Python)" #FFF3B0
+  participant "employee_router.py\n(routers/)" as router
+  participant "employee_manager.py\n(managers/)" as manager
+  participant "employee_repository.py\n(repositories/)" as repository
+end box
+
+== 📤 Request Submission ==
+user -> employeeComponent: Select employee in list
+employeeComponent -> employeeHandler: fetch employee details
+employeeHandler -> employeeAdapter: Send GET request with id
+employeeAdapter -> controller: HTTP GET /employees/{id}
+
+== ⚙️ Business Execution ==
+controller -> service: validate and process reading (execute)
+service -> repositoryClient: read employee (getById)
+repositoryClient -> router: HTTP GET /employees/{id}
+
+== 🗃️ Data Operation ==
+router -> manager: manage reading request (processReadOne)
+manager -> repository: get employee by id (get + commit)
+repository --> manager: result (employee data or error)  
+
+== 📩 Response Transmission ==
+manager --> router: response
+router --> repositoryClient: HTTP 200 or 4xx/5xx
+repositoryClient --> service: read result
+service --> controller: read result
+controller --> employeeAdapter: HTTP 200 or 4xx/5xx
+employeeAdapter --> employeeHandler: read result
+employeeHandler --> employeeComponent: update UI (employee data or error)
+
+@enduml

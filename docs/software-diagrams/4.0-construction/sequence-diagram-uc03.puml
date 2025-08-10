@@ -1,0 +1,50 @@
+﻿@startuml SequenceDiagram - UCS-UC-03 — Modifier un employé
+
+title ChatERP – Sequence Diagram – Update Employee
+
+actor user
+
+box "🟦 Frontend (React + TypeScript)" #D0E6FF
+  participant "EmployeeComponent.tsx\n(components/)" as employeeComponent
+  participant "employeeHandler.ts\n(handlers/)" as employeeHandler
+  participant "httpEmployeeApiAdapter.ts\n(adapters/)" as employeeAdapter
+end box
+
+box "🟩 Backend (ASP.NET Core C#)" #D0FFD6
+  participant "EmployeeController.cs\n(Controllers/)" as controller
+  participant "EmployeeService.cs\n(Services/)" as service
+  participant "HttpEmployeeApiClient.cs\n(Clients/)" as repositoryClient
+end box
+
+box "🟨 Database (FastAPI Python)" #FFF3B0
+  participant "employee_router.py\n(routers/)" as router
+  participant "employee_manager.py\n(managers/)" as manager
+  participant "employee_repository.py\n(repositories/)" as repository
+end box
+
+== 📤 Request Submission ==
+user -> employeeComponent: Save updated employee info
+employeeComponent -> employeeHandler: trigger data update
+employeeHandler -> employeeAdapter: Send PUT request with updated data
+employeeAdapter -> controller: HTTP PUT /employees/{id}
+
+== ⚙️ Business Execution ==  
+controller -> service: validate and process update (execute)  
+service -> repositoryClient: persist changes (update + saveChanges)  
+repositoryClient -> router: HTTP PUT /employees/{id}  
+
+== 🗃️ Data Operation ==  
+router -> manager: manage update request (processUpdate)  
+manager -> repository: update employee (update + commit)  
+repository --> manager: result (confirmation or error)  
+
+== 📩 Response Transmission ==  
+manager --> router: response  
+router --> repositoryClient: HTTP 200 or 4xx/5xx
+repositoryClient --> service: update result  
+service --> controller: update result  
+controller --> employeeAdapter: HTTP 200 or 4xx/5xx
+employeeAdapter --> employeeHandler: update result  
+employeeHandler --> employeeComponent: update UI (confirmation or error)
+
+@enduml
