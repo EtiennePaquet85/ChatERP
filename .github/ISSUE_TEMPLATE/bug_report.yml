@@ -4,6 +4,10 @@ title: "CHRP-<id> : <Summary>"
 labels: [bug]
 
 body:
+  - type: markdown
+    attributes:
+      value: |
+        **Issue Type:** Bug
 
   - type: textarea
     id: description
