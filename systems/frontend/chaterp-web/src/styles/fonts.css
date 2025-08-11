@@ -1,0 +1,86 @@
+/* systems/frontend/chaterp-web/src/styles/fonts.css */
+
+/* --- Caveat Font --- */
+
+/* Caveat Regular - poids 400 */
+@font-face {
+    font-family: 'Caveat';
+    src: url('/fonts/Caveat/Caveat-Regular.woff2') format('woff2'), url('/fonts/Caveat/Caveat-Regular.woff') format('woff'), url('/fonts/Caveat/Caveat-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Caveat Medium - poids 500 */
+@font-face {
+    font-family: 'Caveat';
+    src: url('/fonts/Caveat/Caveat-Medium.woff2') format('woff2'), url('/fonts/Caveat/Caveat-Medium.woff') format('woff'), url('/fonts/Caveat/Caveat-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Caveat SemiBold - poids 600 */
+@font-face {
+    font-family: 'Caveat';
+    src: url('/fonts/Caveat/Caveat-SemiBold.woff2') format('woff2'), url('/fonts/Caveat/Caveat-SemiBold.woff') format('woff'), url('/fonts/Caveat/Caveat-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Caveat Bold - poids 700 */
+@font-face {
+    font-family: 'Caveat';
+    src: url('/fonts/Caveat/Caveat-Bold.woff2') format('woff2'), url('/fonts/Caveat/Caveat-Bold.woff') format('woff'), url('/fonts/Caveat/Caveat-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* --- Comfortaa Font --- */
+
+/* Comfortaa Light - poids 300 */
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('/fonts/Comfortaa/Comfortaa-Light.woff2') format('woff2'), url('/fonts/Comfortaa/Comfortaa-Light.woff') format('woff'), url('/fonts/Comfortaa/Comfortaa-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Comfortaa Regular - poids 400 */
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('/fonts/Comfortaa/Comfortaa-Regular.woff2') format('woff2'), url('/fonts/Comfortaa/Comfortaa-Regular.woff') format('woff'), url('/fonts/Comfortaa/Comfortaa-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Comfortaa Medium - poids 500 */
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('/fonts/Comfortaa/Comfortaa-Medium.woff2') format('woff2'), url('/fonts/Comfortaa/Comfortaa-Medium.woff') format('woff'), url('/fonts/Comfortaa/Comfortaa-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Comfortaa SemiBold - poids 600 */
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('/fonts/Comfortaa/Comfortaa-SemiBold.woff2') format('woff2'), url('/fonts/Comfortaa/Comfortaa-SemiBold.woff') format('woff'), url('/fonts/Comfortaa/Comfortaa-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Comfortaa Bold - poids 700 */
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('/fonts/Comfortaa/Comfortaa-Bold.woff2') format('woff2'), url('/fonts/Comfortaa/Comfortaa-Bold.woff') format('woff'), url('/fonts/Comfortaa/Comfortaa-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
