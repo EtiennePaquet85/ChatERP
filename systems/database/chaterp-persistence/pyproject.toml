@@ -1,0 +1,3 @@
+# systems/database/chaterp-persistence/pyproject.toml
+[tool.black]
+line-length = 120
