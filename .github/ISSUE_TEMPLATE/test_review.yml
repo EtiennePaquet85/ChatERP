@@ -1,0 +1,50 @@
+name: Test Review
+description: Submit a test addition, improvement, or review in ChatERP
+title: "CHRP-<id> : <Summary>"
+labels: [test]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Issue Type:** Test
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the new test in detail.
+    validations:
+      required: true
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: Why is this test important?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Complete
+      description: Provide the steps to complete the test.
+      placeholder: |
+        1. Analyze existing tests
+        2. Add or update tests
+        3. Verify coverage and stability
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria (optional)
+      description: What conditions should be met for this test to be considered done?
+      placeholder: |
+        - Automated tests run without errors
+        - Coverage is increased
+        - Test documentation updated
+    validations:
+      required: false
