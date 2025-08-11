@@ -1,0 +1,13 @@
+﻿# systems/database/chaterp-persistence/requirements.txt
+
+# Dépendances runtime
+aiosqlite
+fastapi
+pydantic[email]
+uvicorn[standard]
+python-multipart
+
+# Outils de développement (format, lint, typage)
+black
+flake8
+mypy
