@@ -1,0 +1,44 @@
+﻿/* systems/frontend/chaterp-web/src/styles/variables.css */
+
+:root {
+    /* 🎨 Couleurs principales */
+    --primary: #714B67;
+    --secondary: #4a90e2;
+    --white: #fff;
+    --bg-light: #f7f9fb;
+    --text-dark: #333;
+    --text-muted: #888;
+    --border: #ddd;
+    --error: #dc3545;
+    --error-bg: #f8d7da;
+    --error-text: #842029;
+    /* 🎨 Couleurs additionnelles */
+    --gray-dark: #333; /* pour .footer */
+    --gray-light: #f1f1f3; /* pour .testimonials */
+    --gray-medium: #555; /* pour .feature-message text */
+    --gray-background: #f9f9f9; /* pour .feature-message bg */
+    /* 📐 Espacements */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-xm: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+    /* 🧱 Bordures et coins */
+    --border-radius-sm: 4px;
+    --border-radius-md: 6px;
+    --border-radius-lg: 8px;
+    /* 🌫️ Ombres */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 0 20px rgba(0, 0, 0, 0.2);
+    /* 🧭 Z-index */
+    --z-base: 1;
+    --z-spinner-overlay: 100;
+    --z-spinner-above-modal: 2000;
+    --z-modal: 1000;
+    --z-toast: 2000;
+    /* 🔄 Animations */
+    --transition-fast: 0.2s ease-in-out;
+    --transition-normal: 0.3s ease;
+}

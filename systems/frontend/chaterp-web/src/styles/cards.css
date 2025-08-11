@@ -1,0 +1,33 @@
+/* systems/frontend/chaterp-web/src/styles/cards.css */
+
+.feature-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    text-align: center;
+    color: var(--text-dark);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+    .feature-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        border-color: var(--primary);
+    }
+
+.feature-icon {
+    width: 48px;
+    margin-bottom: 1rem;
+    filter: grayscale(30%);
+    opacity: 0.9;
+}
+
+.feature-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.feature-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}

@@ -1,0 +1,136 @@
+/* systems/frontend/chaterp-web/src/styles/layout.css */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--white);
+}
+
+.header-title {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700; /* Comfortaa-Bold */
+    font-size: 2rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.2rem;
+    text-shadow: 1px 0 0 currentColor, -1px 0 0 currentColor, 0 1px 0 currentColor, 0 -1px 0 currentColor;
+}
+
+    .header-title .title-part1 {
+        color: var(--primary);
+    }
+
+    .header-title .title-part2 {
+        color: var(--text-muted);
+    }
+
+.header-nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer {
+    padding: 2rem;
+    text-align: center;
+    background: var(--gray-dark);
+    color: var(--white);
+    font-size: 0.95rem;
+    border-top: none;
+}
+
+.hero {
+    padding: 1.5rem 1.5rem;
+    text-align: center;
+    background: var(--white);
+}
+
+    .hero h1 {
+        font-family: 'Caveat', cursive, sans-serif;
+        font-weight: 700; /* Caveat-Bold */
+        font-size: 5.5rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .hero p {
+        font-family: 'Caveat', cursive, sans-serif;
+        font-weight: 600; /* Caveat-SemiBold */
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
+    }
+
+.hero-subtext {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 0 1rem;
+    margin-bottom: 3rem;
+}
+
+.testimonials {
+    background: var(--gray-light);
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+    .testimonials blockquote {
+        font-style: italic;
+        font-size: 1.1rem;
+        color: var(--text-dark);
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+
+    .testimonials p {
+        margin-top: 1rem;
+        color: var(--text-muted);
+    }
+
+.trial-hero {
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+    .trial-hero h1 {
+        font-family: 'Caveat', cursive, sans-serif;
+        font-weight: 500; /* Caveat-Medium */
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .trial-hero p {
+        font-family: 'Caveat', cursive, sans-serif;
+        font-weight: 400; /* Caveat-Regular */
+        font-size: 1.5rem;
+        color: var(--text-muted);
+    }
+
+.feature-message {
+    margin-top: 0.75rem;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--gray-medium);
+    background: var(--gray-background);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-align: center;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* Animation fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

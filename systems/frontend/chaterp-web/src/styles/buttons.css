@@ -1,0 +1,72 @@
+/* systems/frontend/chaterp-web/src/styles/buttons.css */
+
+.button {
+    background: var(--primary, #5c3d55); /* couleur de .create-button */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem; /* aligné avec .create-button */
+    border-radius: 4px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: inline-block;
+}
+
+    .button:hover {
+        background: #4a2f44; /* hover plus foncé de #5c3d55 */
+        color: var(--secondary, #1a2c40);
+    }
+
+.button-secondary {
+    background: #999;
+}
+
+    .button-secondary:hover {
+        background: #777;
+    }
+
+.button-danger {
+    background: #c33;
+}
+
+    .button-danger:hover {
+        background: #a22;
+    }
+
+.button-group {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    min-height: 2rem;
+}
+
+.button-center {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.photo-remove-button {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    transform: translate(0%, -35%);
+    background: #999;
+    color: white;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 16px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: background 0.2s;
+}
+
+    .photo-remove-button:hover {
+        background: #777;
+    }

@@ -1,0 +1,354 @@
+﻿/* systems/frontend/chaterp-web/src/styles/employees.css */
+
+/* 🌿 Conteneur principal de la liste des employés */
+.employee-list {
+    padding: 2rem;
+}
+
+/* 🌿 En-tête avec titre et bouton */
+.employees-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.5rem 2rem 1rem 2rem;
+}
+
+/* 🌿 Titre de la page employé (cliquable pour retour à la liste) */
+.employees-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    font-family: "Arial Rounded MT Bold", "Segoe UI Rounded", Arial, sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    background: none;
+    text-shadow: 0.1px 0 0 currentColor, -0.1px 0 0 currentColor, 0 0.1px 0 currentColor, 0 -0.1px 0 currentColor;
+    transition: color 0.2s;
+}
+
+    .employees-title:hover {
+        color: #555;
+    }
+
+/* 🌿 Grille fluide des cartes employés */
+.employee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+/* 🌿 Sur les grands écrans: 4 colonnes fixes */
+@media (min-width: 1000px) {
+    .employee-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* 🌿 Carte employé individuelle */
+.employee-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: border 0.2s, box-shadow 0.2s, transform 0.2s;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+    .employee-card:hover {
+        border-color: var(--primary);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        transform: translateY(-3px);
+    }
+
+/* 🌿 Conteneur de la photo */
+.employee-card-photo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+/* 🌿 Photo employé dans la carte */
+.employee-photo {
+    width: 120px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: white;
+    padding: 4px;
+}
+
+/* 🌿 Infos de base dans la carte */
+.employee-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* 🌿 Détails nom/rôle/email/téléphone dans la carte */
+.employee-name {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #333;
+}
+
+.employee-role,
+.employee-phone,
+.employee-email {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.employee-role {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.employee-email {
+    word-break: break-all;
+}
+
+/* 🌿 Conteneur fiche de détails */
+.employee-details-container {
+    padding: 2rem;
+}
+
+/* 🌿 Carte de détails d'un employé */
+.employee-details-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 🌿 Zone image fiche détails */
+.employee-details-photo-container {
+    flex: 0 0 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px;
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* 🌿 Conteneur centré pour photo employé (dans formulaire) */
+.employee-details-photo-wrapper {
+    text-align: center;
+    position: relative;
+    display: inline-block;
+}
+
+/* 🌿 Infos de la fiche détails */
+.employee-details-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+    .employee-details-info h2 {
+        margin: 0 0 1rem 0;
+        font-size: 1.4rem;
+        color: #333;
+    }
+
+/* 🌿 Nom (utilisé en lecture ou en formulaire) */
+.employee-name-label,
+.employee-name-input,
+.employee-name-display,
+.name-label,
+.name-value,
+.name-input {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #333;
+    font-family: "Arial Rounded MT Bold", "Segoe UI Rounded", Arial, sans-serif;
+}
+
+/* 🌿 Grille de formulaire */
+.employee-details-grid {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content 1fr;
+    row-gap: 0.75rem;
+    column-gap: 1rem;
+    align-items: center;
+}
+
+    .employee-details-grid label {
+        text-align: left;
+        font-weight: 600;
+        white-space: nowrap;
+        color: #333;
+        padding-right: 0.4rem;
+    }
+
+    .employee-details-grid input {
+        width: 100%;
+        padding: 0.35rem 0.5rem;
+        box-sizing: border-box;
+    }
+
+/* 🌿 Lecture seule */
+.field-readonly {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* 🌿 Zone relative superposée avec fond transparent */
+.relative-overlay {
+    position: relative;
+}
+
+/* 🌿 Zone modale superposée avec fond semi-transparent */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* 🌿 Contenu de la modale */
+.modal {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* 🌿 Boutons de la modale */
+.modal-buttons {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* 🌿 Conteneur général de la modale */
+.modal-wrapper {
+    position: relative;
+}
+
+/* 🌿 Champs avec erreurs */
+.field-error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
+.employees-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 2rem 1rem 2rem;
+    min-height: 2.5rem;
+}
+
+/* Titre (cliquable) */
+.employees-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    font-family: "Arial Rounded MT Bold", "Segoe UI Rounded", Arial, sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    background: none;
+    text-shadow: 0.1px 0 0 currentColor, -0.1px 0 0 currentColor, 0 0.1px 0 currentColor, 0 -0.1px 0 currentColor;
+    transition: color 0.2s;
+}
+
+    .employees-title:hover {
+        color: #555;
+        color: var(--secondary);
+    }
+
+/* Message inline avec boutons et titre, mais tout à droite  */
+.inline-message {
+    flex-grow: 1;
+    display: flex;
+    gap: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    justify-content: flex-end;
+}
+
+/* Success*/
+.inline-success {
+    background-color: #d1e7dd;
+    border: 1px solid #198754;
+    color: #0f5132;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+}
+
+/* Erreur */
+.inline-error {
+    background-color: #f8d7da;
+    border: 1px solid #dc3545;
+    color: #842029;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+}
+
+.message-close {
+    background: none;
+    border: none;
+    color: inherit;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+    .message-close:hover {
+        color: #000;
+    }
+
+/* 🌿 Champ de téléversement stylisé */
+.file-upload-label {
+    display: inline-block;
+    background-color: var(--primary, #0d6efd);
+    color: white;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+    .file-upload-label:hover {
+        background-color: var(--primary-dark, #084298);
+    }
+
+    .file-upload-label input[type="file"] {
+        display: none;
+    }
