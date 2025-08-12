@@ -1,0 +1,21 @@
+{
+  "name": "chaterp-web-tests",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "test:clean": "rm -rf ./coverage-report/coverage/"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.3.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@vitejs/plugin-react": "^4.7.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "vitest": "^3.2.4",
+    "jsdom": "^22.1.0",
+    "typescript": "^5.0.0"
+  }
+}
