@@ -4,10 +4,12 @@ title: "CHRP-<id> : <Summary>"
 labels: [test]
 
 body:
-  - type: markdown
+  - type: input
+    id: issue_type
     attributes:
-      value: |
-        **Issue Type:** Test
+      label: Issue Type:
+      value: Test
+      readonly: true
 
   - type: textarea
     id: description
