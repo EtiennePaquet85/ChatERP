@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "test-clean": {
+      "version": "1.0.0",
+      "commands": [
+        "test-clean"
+      ],
+      "rollForward": false
+    },
+    "test-coverage": {
+      "version": "1.0.0",
+      "commands": [
+        "test-coverage"
+      ],
+      "rollForward": false
+    }
+  }
+}

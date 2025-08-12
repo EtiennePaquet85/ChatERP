@@ -1,0 +1,13 @@
+﻿<!-- systems/backend/chaterp-server-tests/tools/test-clean/test-clean.csproj -->
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>test-clean</ToolCommandName>
+	</PropertyGroup>
+
+</Project>
+
