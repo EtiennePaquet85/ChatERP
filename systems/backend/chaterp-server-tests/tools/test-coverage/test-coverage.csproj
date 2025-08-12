@@ -1,0 +1,12 @@
+<!-- systems/backend/chaterp-server-tests/tools/test-coverage/test-coverage.csproj -->
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>test-coverage</ToolCommandName>
+	</PropertyGroup>
+
+</Project>
