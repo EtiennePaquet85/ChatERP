@@ -28,8 +28,8 @@ body:
   - type: textarea
     id: steps
     attributes:
-      label: Steps to Complete
-      description: Provide the steps to complete the test.
+      label: Steps to Execute
+      description: Provide the steps to execute the test.
       placeholder: |
         1. Analyze existing tests
         2. Add or update tests
