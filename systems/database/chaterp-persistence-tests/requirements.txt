@@ -1,0 +1,14 @@
+﻿# systems/database/chaterp-persistence-tests/requirements.txt
+
+# Dépendances runtime
+aiosqlite
+fastapi
+pydantic[email]
+uvicorn[standard]
+python-multipart
+
+# Outils de test
+httpx
+pytest
+pytest-cov
+pytest-asyncio
