@@ -1,0 +1,87 @@
+﻿# ChatERP/scripts/structure/generate-project-structure-folders.ps1
+
+# 📂 Script PowerShell – Générateur d’arborescence du projet ChatERP (dossiers uniquement)
+#
+# 🧭 Objectif :
+#   Génère un fichier Markdown contenant l’arborescence simplifiée du projet ChatERP (sans fichiers).
+#   Seuls les dossiers pertinents sont inclus, pour aider à comprendre la structure logicielle.
+#
+# 📄 Fichier généré : docs/software-structure/project-structure-folders.md
+#
+# 🔍 Contenu :
+#   - Titre et introduction au format Markdown
+#   - Arborescence avec indentation visuelle (├──, └──, │)
+#   - Bloc de code Markdown (~~~) pour mise en page claire
+#
+# 🚫 Dossiers exclus :
+#   bin, obj, .vs, .git, node_modules, Debug, Release, wwwroot, .github, Properties, .idea, .venv, __pycache__, .mypy_cache, Dist
+#
+# ▶️ Exemple d’exécution depuis la racine du projet :
+#   PS C:\Code\ChatERP> powershell -ExecutionPolicy Bypass -File .\scripts\structure\generate-project-structure-folders.ps1
+#
+# 📝 Écrit en UTF-8 pour supporter les caractères spéciaux.
+
+
+# 📌 Étape 1 : Définir le répertoire racine du projet
+$root = Get-Location
+
+# 📌 Étape 2 : Définir le chemin du fichier de sortie
+$output = Join-Path $root "docs/software-structure/project-structure-folders.md"
+
+# 📌 Étape 3 : Définir la liste des dossiers à exclure de l’arborescence
+$excluded = @("bin", "obj", ".vs", ".git", "node_modules", "Debug", "Release", "wwwroot", ".github", "Properties", ".idea", ".venv", "__pycache__", ".mypy_cache", "Dist")
+
+# 📌 Étape 4 : Définir le contenu d’introduction du fichier Markdown
+$intro = @"
+# 🌳 ChatERP - Arborescence du projet sans fichiers
+
+Voici la structure simplifiée du projet ChatERP, montrant les principaux dossiers.  
+Cette organisation facilite le développement, les tests, la documentation, et le déploiement.
+
+---
+
+## 🌳 Arborescence simplifiée sans fichiers
+
+Voici la structure actuelle du projet, incluant les dossiers principaux :
+
+~~~
+"@
+
+# 📌 Étape 5 : Définir la ligne de fermeture du bloc de code Markdown
+$outro = "~~~"
+
+# 📌 Étape 6 : Écrire l’introduction dans le fichier de sortie
+$intro | Out-File -FilePath $output -Encoding UTF8
+
+# 📌 Étape 7 : Définir la fonction récursive pour générer l’arborescence (dossiers uniquement)
+function Get-DirectoryTree {
+    param (
+        [string]$path,
+        [string]$prefix = "",
+        [bool]$isLast = $true
+    )
+
+    $name = Split-Path -Leaf $path
+    $connector = if ($prefix -eq "") { "" } elseif ($isLast) { "└── " } else { "├── " }
+
+    # Écrire le nom du dossier
+    "$prefix$connector$name/" | Out-File -FilePath $output -Encoding UTF8 -Append
+
+    $newPrefix = if ($prefix -eq "") { "    " } elseif ($isLast) { "$prefix    " } else { "$prefix│   " }
+
+    $items = Get-ChildItem -Path $path -Force | Where-Object {
+        $_.PSIsContainer -and ($excluded -notcontains $_.Name)
+    } | Sort-Object Name
+
+    for ($i = 0; $i -lt $items.Count; $i++) {
+        $child = $items[$i]
+        $childIsLast = ($i -eq $items.Count - 1)
+        Get-DirectoryTree -path $child.FullName -prefix $newPrefix -isLast $childIsLast
+    }
+}
+
+# 📌 Étape 8 : Lancer la génération à partir du répertoire racine
+Get-DirectoryTree -path $root -prefix ""
+
+# 📌 Étape 9 : Ajouter la ligne de fermeture du bloc de code Markdown
+$outro | Out-File -FilePath $output -Encoding UTF8 -Append
