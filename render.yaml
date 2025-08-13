@@ -1,29 +1,34 @@
-services:
-  - type: web
-    name: chaterp-database
-    plan: free
-    runtime: docker
-    dockerfilePath: ./database/Dockerfile
-    envVars:
-      - key: PORT
-        value: "80"
+﻿# ChatERP/render.yaml
 
+services:
   - type: web
     name: chaterp-backend
     plan: free
     runtime: docker
-    dockerfilePath: ./backend/Dockerfile
+    dockerfilePath: ./systems/backend/chaterp-server/Dockerfile
     envVars:
-      - key: DATABASE_API_URL
-        value: "https://chaterp-database.onrender.com"
-      - key: ASPNETCORE_PORT
+      - key: BACKEND_API_PORT
         value: "80"
+      - key: DATABASE_API_URL
+        value: http://chaterp-database:80
+
+  - type: web
+    name: chaterp-database
+    plan: free
+    runtime: docker
+    dockerfilePath: ./systems/database/chaterp-persistence/Dockerfile
 
   - type: web
     name: chaterp-frontend
     plan: free
     runtime: docker
-    dockerfilePath: ./frontend/Dockerfile
+    dockerfilePath: ./systems/frontend/chaterp-web/Dockerfile
     envVars:
-      - key: VITE_API_URL
-        value: "https://chaterp-backend.onrender.com"
+      - key: VITE_BACKEND_API_URL_LOCAL
+        value: http://backend:80
+      - key: VITE_BACKEND_API_URL_CLOUD
+        value: http://chaterp-backend:80
+      - key: VITE_DATABASE_API_URL_LOCAL
+        value: http://database:80
+      - key: VITE_BACKEND_API_URL_CLOUD
+        value: http://chaterp-backend:80

@@ -1,0 +1,42 @@
+# ChatERP/docker/docker-compose.yml
+
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ../systems/backend/chaterp-server
+      dockerfile: Dockerfile
+    image: etiennepaquet85/chaterp-server:latest
+    ports:
+      - "5000:80"
+    depends_on:
+      - database
+    environment:
+      - BACKEND_API_PORT=80
+      - DATABASE_API_URL=http://database:80
+
+  database:
+    build:
+      context: ../systems/database/chaterp-persistence
+      dockerfile: Dockerfile
+    image: etiennepaquet85/chaterp-persistence:latest
+    ports:
+      - "8000:80"
+    volumes:
+      - ../systems/database/chaterp-persistence/data/photos:/app/data/photos
+
+  frontend:
+    build:
+      context: ../systems/frontend/chaterp-web
+      dockerfile: Dockerfile
+    image: etiennepaquet85/chaterp-web:latest
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    environment:
+      - VITE_BACKEND_API_URL_LOCAL=http://backend:80
+      - VITE_BACKEND_API_URL_CLOUD=https://chaterp-server.onrender.com
+      - VITE_DATABASE_API_URL_LOCAL=http://database:80 
+      - VITE_DATABASE_API_URL_CLOUD=https://chaterp-persistence.onrender.com
