@@ -58,7 +58,7 @@ Ce projet a pour but :
 * Ouvrir le fichier `ChatERP.sln` dans Visual Studio
 * Restaurer les dépendances NuGet (clic droit sur la solution > Restaurer)
 * Assurez-vous que **.NET 8**, **Node.js 18+**, **Python 3.11+** et **Docker** sont bien installés pour le bon fonctionnement du projet
-* Lancer les systèmes `chaterp-web`, `chaterp-server` et `chaterp-persistence` via `chaterp-compose` (voir section [🚀 Déploiement](#deploiement))
+* Lancer les systèmes `chaterp-web`, `chaterp-server` et `chaterp-persistence` via `chaterp-compose` (voir section [🚀 Déploiement](#-déploiement))
 
 ---
 
