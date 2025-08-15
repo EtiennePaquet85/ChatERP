@@ -51,6 +51,7 @@ ChatERP/
     │   │       │   ├── Controllers/
     │   │       │   └── Services/
     │   │       └── tools/
+    │   │           ├── test-clean/
     │   │           └── test-coverage/
     │   ├── database/
     │   │   ├── chaterp-persistence/
@@ -100,5 +101,7 @@ ChatERP/
     │               └── pages/
     └── tests/
         └── chaterp-tests/
-            └── integration-tests/
+            ├── coverage-reports/
+            ├── integration-tests/
+            └── unit-tests/
 ~~~
