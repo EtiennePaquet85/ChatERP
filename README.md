@@ -25,19 +25,19 @@ Accéder à l’application en ligne ➜ [ChatERP – www.chaterp.app](https://w
 
 ## 🗂️ Sommaire
 
-1. [🎯 Objectif](#objectif)
-2. [🔧 Mise en route](#mise-en-route)
-3. [✅ Statut du projet](#statut-du-projet)
-4. [🧭 Processus de développement](#processus-de-developpement)
-5. [🧾 Analyse des besoins](#analyse-des-besoins)
-6. [🏗️ Architecture logicielle](#architecture-logicielle)
-7. [🧠 Conception](#conception)
-8. [🧱 Construction](#construction)
-9. [✅ Tests et validation](#tests-et-validation)
-10. [🚀 Déploiement](#deploiement)
-11. [🔧 Maintenance](#maintenance)
-12. [⚖️ Licence](#licence)
-13. [📚 À propos](#a-propos)
+1. [🎯 Objectif](#-objectif)
+2. [🔧 Mise en route](#-mise-en-route)
+3. [✅ Statut du projet](#-statut-du-projet)
+4. [🧭 Processus de développement](#-processus-de-développement)
+5. [🧾 Analyse des besoins](#-analyse-des-besoins)
+6. [🏗️ Architecture logicielle](#-architecture-logicielle)
+7. [🧠 Conception](#-conception)
+8. [🧱 Construction](#-construction)
+9. [✅ Tests et validation](#-tests-et-validation)
+10. [🚀 Déploiement](#-déploiement)
+11. [🔧 Maintenance](#-maintenance)
+12. [⚖️ Licence](#-licence)
+13. [📚 À propos](#-à-propos)
 
 
 ---
