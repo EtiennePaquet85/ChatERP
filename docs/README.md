@@ -76,4 +76,4 @@ Toute contribution doit respecter la structure ci-dessus.
 
 ---
 
-**Accéder à la racine du projet:** [ChatERP GitHub Repository](../../)
+**Accéder à la racine du projet:** [ChatERP GitHub Repository](https://github.com/EtiennePaquet85/ChatERP)
