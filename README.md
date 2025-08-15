@@ -30,13 +30,13 @@ Accéder à l’application en ligne ➜ [ChatERP – www.chaterp.app](https://w
 3. [✅ Statut du projet](#-statut-du-projet)
 4. [🧭 Processus de développement](#-processus-de-développement)
 5. [🧾 Analyse des besoins](#-analyse-des-besoins)
-6. [🏗️ Architecture logicielle](#-architecture-logicielle)
+6. [🏗 Architecture logicielle](#-architecture-logicielle)
 7. [🧠 Conception](#-conception)
 8. [🧱 Construction](#-construction)
 9. [✅ Tests et validation](#-tests-et-validation)
 10. [🚀 Déploiement](#-déploiement)
 11. [🔧 Maintenance](#-maintenance)
-12. [⚖️ Licence](#-licence)
+12. [⚖ Licence](#-licence)
 13. [📚 À propos](#-à-propos)
 
 
@@ -134,7 +134,7 @@ L’application s’adresse à des utilisateurs professionnels ayant besoin d’
 
 ---
 
-## 🏗️ Architecture logicielle
+## 🏗 Architecture logicielle
 
 ChatERP adopte une **architecture en couches**, structurée autour de trois systèmes indépendants, chacun responsable d’une fonction claire du système.
 
@@ -340,7 +340,7 @@ Les environnements cloud suivants permettent d’interagir avec l’application 
 
 ---
 
-## ⚖️ Licence
+## ⚖ Licence
 
 Ce projet est distribué sous la licence **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**.
 
